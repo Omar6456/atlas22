@@ -435,7 +435,10 @@ color: #000;
 }
 @media (max-width: 768px) {
   .text-gal  {
-    margin-top: 40%;
+    margin-top: 70%;
+  }
+  .text-gal p  {
+    display: none;
   }
 }
 .second-title {
