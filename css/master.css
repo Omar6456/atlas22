@@ -562,11 +562,17 @@ article .small {
 }
 .small .text-info {
   background-color: #fff;
-  color: #000;
-  text-align: center;
   padding: 10px;
   border: #000 1px solid;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.small .text-info p {
+  color: #000;
+  text-align: center;
+  padding: 10px ;
 }
 .small .grad1 {
   text-align: center;
