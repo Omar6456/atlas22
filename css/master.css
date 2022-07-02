@@ -859,3 +859,24 @@ footer .box .line .info {
   padding: 15px;
   border-radius: 4px;
 }
+.prof {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+  background: linear-gradient( to left, #1d2933,#f3f3f3);
+
+}
+.p-info {
+  padding: 10px; 
+}
+.karim {
+  position: relative;
+  top: -24px;
+}
+@media (max-width: 767px) {
+  .karim {
+    order: -1;
+  }
+}

@@ -3,6 +3,7 @@ function show() {
     document.getElementById("list").classList.toggle("show");
     document.getElementById("list2").classList.toggle("show2");
 }
+
 // =================================================
 
 let mybutton = document.getElementById("myBtn");
@@ -74,9 +75,13 @@ require([
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
   "esri/widgets/ScaleBar",
-  "esri/widgets/Legend"
+  "esri/widgets/Legend",
+  "esri/widgets/Search",
+  "esri/widgets/Measurement",
+  "esri/widgets/Editor",
+  "esri/widgets/Locate"
 
-], function(esriConfig,Map, MapView, FeatureLayer,ScaleBar, Legend) {
+], function(esriConfig,Map, MapView, FeatureLayer,ScaleBar, Legend, Search, Measurement,Editor, Locate ) {
 
 esriConfig.apiKey = "AAPK02ae9b68d4e34bfaa197ea82ed78c084VDVSJJOpfv7g6f07_OqhssLfBkPGJxAogSqk1cZqh-8aYjcu-LNLRsIKoV0nsYDd";
 
@@ -106,6 +111,28 @@ const scalebar = new ScaleBar({
       container: basemapGalleryDiv
     });
     view.ui.add(legend, "bottom-left");
+    
+    const searchWidget = new Search({
+      view: view
+    });
+    // Adds the search widget below other elements in
+    // the top left corner of the view
+    view.ui.add(searchWidget, {
+      position: "bottom-right",
+      index: 2
+    });
+    const measurement = new Measurement({
+      view: view,
+      activeTool: "distance"
+    });
+    view.ui.add(measurement, "bottom-left");
+
+    const editor = new Editor({
+      view: view
+    });
+    
+    view.ui.add(editor, "top-right");
+    
 
 });
 // 
@@ -135,49 +162,47 @@ const view = new MapView({
 
 
     const trailsLayer = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار/FeatureServer/5"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/السياحية/FeatureServer/5"
     });
     map.add(trailsLayer, 0);
 
 
     const trailheadsLayer = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/فنادق/FeatureServer/1"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/5"
     });
     map.add(trailheadsLayer); 
     // 1pharo
     const trailheadsLayer2 = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار3/FeatureServer/4"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/4"
     });
     map.add(trailheadsLayer2);
     // ? 2chr
     const trailheadsLayer3 = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار3/FeatureServer/3"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/3"
     });
     map.add(trailheadsLayer3);
     //  3fg
     const trailheadsLayer4 = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار3/FeatureServer/2"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/2"
     });
     map.add(trailheadsLayer4);
     // ops
     const trailheadsLayer5 = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار3/FeatureServer/1"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/1"
     });
     map.add(trailheadsLayer5);
     // ksd
     const trailheadsLayer6 = new FeatureLayer({
-      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/المسار3/FeatureServer/0"
+      url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/_/FeatureServer/0"
     });
     map.add(trailheadsLayer6);
 
     const scalebar = new ScaleBar({
       view: view,
-      container: ScaleBarDiv2
     });
     view.ui.add(scalebar, "top-right");
     const legend = new Legend ({
       view: view,
-      container: basemapGalleryDiv3
     });
     view.ui.add(legend, "bottom-left");
 
@@ -223,9 +248,12 @@ const trailheadsLayer = new FeatureLayer({
 });
 map.add(trailheadsLayer);
 
+const scalebar = new ScaleBar({
+  view: view,
+});
+view.ui.add(scalebar, "top-right");
 const legend = new Legend ({
   view: view,
-  container: basemapGalleryDiv2
 });
 view.ui.add(legend, "bottom-left");
 
@@ -274,9 +302,12 @@ const trailsLayer7 = new FeatureLayer({
   url: "https://services3.arcgis.com/dnBdTND9r7WDLMek/arcgis/rest/services/Hydrology/FeatureServer/1"
 });
 map.add(trailsLayer7, 0);
+const scalebar = new ScaleBar({
+  view: view,
+});
+view.ui.add(scalebar, "top-right");
 const legend = new Legend ({
   view: view,
-  container: basemapGalleryDiv4
 });
 view.ui.add(legend, "bottom-left");
 
@@ -315,13 +346,16 @@ const view = new MapView({
 
 
 const trailheadsLayer = new FeatureLayer({
-  url: "https://services7.arcgis.com/ydgkIh1tsn77SGGY/arcgis/rest/services/الخدمات_المصرفية/FeatureServer/0"
+  url: "https://services7.arcgis.com/ydgkIh1tsn77SGGY/arcgis/rest/services/الخدمات_المصرفية3/FeatureServer/0"
 });
 map.add(trailheadsLayer); 
 
+const scalebar = new ScaleBar({
+  view: view,
+});
+view.ui.add(scalebar, "top-right");
 const legend = new Legend ({
   view: view,
-  container: basemapGalleryDiv5
 });
 view.ui.add(legend, "bottom-left");
 
@@ -372,10 +406,12 @@ const trailheadsLayer = new FeatureLayer({
   url: "https://services7.arcgis.com/ydgkIh1tsn77SGGY/arcgis/rest/services/شبكة_الكهرباء/FeatureServer/0"
 });
 map.add(trailheadsLayer); 
-
+const scalebar = new ScaleBar({
+  view: view,
+});
+view.ui.add(scalebar, "top-right");
 const legend = new Legend ({
   view: view,
-  container: basemapGalleryDiv6
 });
 view.ui.add(legend, "bottom-left");
 
