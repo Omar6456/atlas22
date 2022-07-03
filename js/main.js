@@ -234,7 +234,7 @@ require([
 esriConfig.apiKey = "AAPK02ae9b68d4e34bfaa197ea82ed78c084VDVSJJOpfv7g6f07_OqhssLfBkPGJxAogSqk1cZqh-8aYjcu-LNLRsIKoV0nsYDd";
 // arcgis-imagery
 const map = new Map({
-  basemap: "streets-vector"
+  basemap: "hybrid"
 });
 
 const view = new MapView({
@@ -284,7 +284,7 @@ require([
 esriConfig.apiKey = "AAPK02ae9b68d4e34bfaa197ea82ed78c084VDVSJJOpfv7g6f07_OqhssLfBkPGJxAogSqk1cZqh-8aYjcu-LNLRsIKoV0nsYDd";
 // arcgis-imagery
 const map = new Map({
-  basemap: "streets-vector"
+  basemap: "arcgis-topographic"
 });
 
 const view = new MapView({
@@ -382,7 +382,7 @@ require([
 esriConfig.apiKey = "AAPK02ae9b68d4e34bfaa197ea82ed78c084VDVSJJOpfv7g6f07_OqhssLfBkPGJxAogSqk1cZqh-8aYjcu-LNLRsIKoV0nsYDd";
 // arcgis-imagery
 const map = new Map({
-  basemap: "streets-vector"
+  basemap: "hybrid"
 });
 
 const view = new MapView({
